@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Modelatm */
 
-$this->title = 'Update Modelatm: ' . $model->id_model;
-$this->params['breadcrumbs'][] = ['label' => 'Modelatms', 'url' => ['index']];
+$this->title = 'Изменить модель: ' . $model->id_model;
+$this->params['breadcrumbs'][] = ['label' => 'Модель', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_model, 'url' => ['view', 'id' => $model->id_model]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="modelatm-update">
 

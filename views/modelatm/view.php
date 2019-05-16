@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Modelatm */
 
 $this->title = $model->id_model;
-$this->params['breadcrumbs'][] = ['label' => 'Modelatms', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Модели', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id_model], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id_model], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id_model], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id_model], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id_model',
             'model_name',
-            'id_soft',
+            //'id_soft',
+            [
+                'attribute' => 'id_soft',
+                'value' => $model->soft->soft_name,
+            ],
         ],
     ]) ?>
 

@@ -17,7 +17,7 @@ class LoginForm extends Model
     public $password;
     public $lastname;
     public $rememberMe = true;
-
+    public $verifyCode;
     private $_user = false;
 
 
@@ -28,12 +28,12 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password', 'lastname'], 'required', 'message'=>Yii::t('app', 'Заполните это поле')],
-
+            [['username', 'password', 'lastname', 'verifyCode'], 'required', 'message'=>Yii::t('app', 'Заполните это поле')],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['verifyCode', 'captcha']
         ];
     }
 
@@ -86,6 +86,7 @@ class LoginForm extends Model
             'username' => 'Имя',
             'password' => 'Пароль',
             'lastname' => 'Фамилия',
+            'verifyCode' => 'Проверочный код'
         ];
     }
 }

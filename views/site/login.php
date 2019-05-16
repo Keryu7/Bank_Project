@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
+use developit\captcha\Captcha;
 
 $this->title = 'Вход';
 ?>
@@ -36,7 +37,8 @@ $this->title = 'Вход';
         <?/*= $form->field($model, 'rememberMe')->checkbox([
             'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) */?>
-
+        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(),[
+            'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',]) ?>
         <div class="form-group">
             <div class="col-lg-12">
                 <?= Html::submitButton('Войти', ['class' => 'btn btn-lg btn-primary btn-block', 'name' => 'login-button']) ?>

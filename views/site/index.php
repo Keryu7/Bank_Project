@@ -9,23 +9,16 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
 
 
+        <h1 style="margin-bottom: 50px">Добро пожаловать</h1>
         <?php
-        if (isset ($_POST['username']) && isset ($_POST['userlastname']) && isset ($_POST['password'])){
-        $userName = $_POST['username'];
-        $userLastName = $_POST['userlastname'];
-        $password = $_POST['password'];
-        }
+        echo \tugmaks\RssFeed\RssReader::widget([
+            'channel'=>'https://news.tut.by/rss/all.rss',
+            'pageSize' => 3,
+            'itemView' => '@app/views/site/rss_news', //To set own viewFile set 'itemView'=>'@frontend/views/site/_rss_item'. Use $model var to access item properties
+            'wrapTag' => 'div',
+            'wrapClass' => 'rss-wrap',
+        ]);
         ?>
-        <div class="contaier">
-            <form class="form-signin" method="post">
-                <h2 style="text-align: center">Authorization</h2>
-                <input type="text" name="username" class="form-control" placeholder="Name" required>
-                <input type="text" name="userlastname" class="form-control" placeholder="LastName" required>
-                <input type="text" name="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-            </form>
-            <p><a href="images/xxx.jpg">Посмотрите на мою фотографию!</a></p>
-        </div>
 
     </div>
 </div>

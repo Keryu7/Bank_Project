@@ -14,10 +14,21 @@ class BankatmSearch extends Bankatm
     /**
      * {@inheritdoc}
      */
+
+
+    public function attributes()
+    {
+        // делаем поле зависимости доступным для поиска
+        return array_merge(parent::attributes(), ['address.region']);
+    }
+
+
+
     public function rules()
     {
         return [
             [['id_atm', 'id_model', 'id_address'], 'integer'],
+            [['address.region'], 'safe']
         ];
     }
 
@@ -47,6 +58,17 @@ class BankatmSearch extends Bankatm
             'query' => $query,
         ]);
 
+
+        //$query->joinWith(['address' => function($query) { $query->from(['address' => 'bankatm']); }]);
+// добавляем сортировку по колонке из зависимости
+        $dataProvider->sort->attributes['address.region'] = [
+            'asc' => ['address.region' => SORT_ASC],
+            'desc' => ['address.region' => SORT_DESC],
+        ];
+
+
+
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -60,7 +82,7 @@ class BankatmSearch extends Bankatm
             'id_atm' => $this->id_atm,
             'id_model' => $this->id_model,
             'id_address' => $this->id_address,
-        ]);
+        ])->andFilterWhere(['LIKE', 'address.region', $this->getAttribute('address.region')]);;
 
 
         return $dataProvider;

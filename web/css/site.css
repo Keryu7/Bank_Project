@@ -41,7 +41,7 @@ a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
     display: inline-block;
-    font-family: 'Glyphicons Halflings';
+    font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
     line-height: 1;
@@ -49,11 +49,11 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+    content: /*"\e113"*/ "\f15d";
 }
 
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+    content: /*"\e114"*/ "\f15e";
 }
 
 .sort-numerical a.asc:after {

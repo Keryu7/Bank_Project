@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Inkass */
 
-$this->title = 'Update Inkass: ' . $model->id_inkass;
-$this->params['breadcrumbs'][] = ['label' => 'Inkasses', 'url' => ['index']];
+$this->title = 'Изменить инкассацию: ' . $model->id_inkass;
+$this->params['breadcrumbs'][] = ['label' => 'Инкассации', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_inkass, 'url' => ['view', 'id' => $model->id_inkass]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="inkass-update">
 

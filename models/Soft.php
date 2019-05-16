@@ -39,8 +39,8 @@ class Soft extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_soft' => 'Id Soft',
-            'soft_name' => 'Soft Name',
+            'id_soft' => 'Id ПО',
+            'soft_name' => 'Наименование ПО',
         ];
     }
 

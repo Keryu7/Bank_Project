@@ -32,8 +32,8 @@ class Bankatm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_atm', 'id_model', 'id_address', 'address.region'], 'required'],
-            [['id_atm', 'id_model', 'id_address', 'address.region'], 'integer'],
+            [['id_atm', 'id_model', 'id_address', ], 'required'],
+            [['id_atm', 'id_model', 'id_address', ], 'integer'],
             [['id_atm'], 'unique'],
             [['id_address'], 'exist', 'skipOnError' => true, 'targetClass' => Address::className(), 'targetAttribute' => ['id_address' => 'id_address']],
             [['id_model'], 'exist', 'skipOnError' => true, 'targetClass' => Modelatm::className(), 'targetAttribute' => ['id_model' => 'id_model']],

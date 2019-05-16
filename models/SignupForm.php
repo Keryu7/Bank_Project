@@ -8,6 +8,8 @@ class SignupForm extends Model{
     public $username;
     public $password;
     public $lastname;
+    public $verifyCode;
+    public $role;
 
     public function rules()
     {
@@ -15,7 +17,9 @@ class SignupForm extends Model{
             [['username'], 'required', 'message'=>Yii::t('app', 'Введите Ваше имя')],
             [['lastname'], 'required', 'message' => 'Введите Вашу Фамилию'],
             [['password'], 'required', 'message' => 'Введите пароль'],
-            ['lastname', 'unique', 'targetClass' => users::className(),  'message' => 'Это имя уже занят'],
+            [['role'], 'required', 'message' => 'Назначьте роль'],
+            ['verifyCode', 'captcha'],
+            ['lastname', 'unique', 'targetClass' => users::className(),  'message' => 'Это имя уже занято'],
         ];
     }
 
@@ -24,6 +28,8 @@ class SignupForm extends Model{
             'username' => 'Имя',
             'password' => 'Пароль',
             'lastname' => 'Фамилия',
+            'role' => 'Должность',
+            'verifyCode' => 'Проверочный код'
         ];
     }
     public static function tableName()

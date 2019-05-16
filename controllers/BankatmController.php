@@ -8,6 +8,7 @@ use app\models\BankatmSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * BankatmController implements the CRUD actions for Bankatm model.
@@ -37,6 +38,10 @@ class BankatmController extends Controller
     {
         $searchModel = new BankatmSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->pagination = [
+            'pageSize' => 8,
+        ];
 
         return $this->render('index', [
             'searchModel' => $searchModel,

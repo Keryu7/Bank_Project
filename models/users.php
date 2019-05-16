@@ -31,6 +31,10 @@ class users extends ActiveRecord implements IdentityInterface
         ],
     ];*/
 
+    public static function tableName()
+    {
+        return 'users';
+    }
 
     /**
      * {@inheritdoc}
@@ -39,6 +43,16 @@ class users extends ActiveRecord implements IdentityInterface
     {
         return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }*/
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя',
+            'lastname' => 'Фамилия',
+            'role' => 'Должность',
+        ];
+    }
+
 
     public static function findIdentity($id)
     {
@@ -97,6 +111,8 @@ class users extends ActiveRecord implements IdentityInterface
         return $this->authKey;
     }
 
+
+
     /**
      * {@inheritdoc}
      */
@@ -119,5 +135,22 @@ class users extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         return \Yii::$app->security->validatePassword($password, $this->password);
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $role = $_POST['SignupForm']['role'];
+
+        if ($role == 'engineer') {
+            $auth = \Yii::$app->authManager;
+            $editor = $auth->getRole('repair'); // Получаем роль editor
+            $auth->assign($editor, $this->id); // Назначаем пользователю, которому принадлежит модель User
+        } else {
+            $auth = \Yii::$app->authManager;
+            $editor = $auth->getRole('inkass'); // Получаем роль editor
+            $auth->assign($editor, $this->id);
+        }
     }
 }

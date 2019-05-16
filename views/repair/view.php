@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Repair */
 
 $this->title = $model->id_repair;
-$this->params['breadcrumbs'][] = ['label' => 'Repairs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ремонт', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id_repair], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id_repair], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id_repair], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id_repair], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,11 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_repair',
+            //'id_repair',
+            'id_atm',
             'repair',
             'date_repair',
-            'id_atm',
-            'id_user',
+
+            //'id_user',
+            [
+                'attribute' => 'id_user',
+                'value' => $model->user->lastname,
+            ],
         ],
     ]) ?>
 

@@ -17,11 +17,13 @@ use app\models\SignupForm;
 class SiteController extends Controller
 {
 
-    public function beforeAction($action) {
+    /*public function beforeAction($action) {
         if(Yii::$app->user->isGuest && $action->id != 'login' && $action->id != 'signup')
             $this->redirect(array('site/login'));
+        if(!Yii::$app->user->isGuest && $action->id != 'login' && $action->id != 'signup')
+            $this->redirect(array('bankatm/index'));
         return true;
-    }
+    }*/
 
     /**
      * {@inheritdoc}
@@ -54,13 +56,25 @@ class SiteController extends Controller
      */
     public function actions()
     {
+        //$this->layout = $this->setting['layout'];
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
+            /*'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],*/
+            'captcha' => [
+
+                'class' => 'developit\captcha\CaptchaAction',
+
+                'type' => 'numbers', // 'numbers', 'letters' or 'default' (contains numbers & letters)
+
+                'minLength' => 4,
+
+                'maxLength' => 4,
+
             ],
         ];
     }
@@ -73,6 +87,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+
     }
 
     /**
@@ -83,12 +98,12 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(array('bankatm/index'));
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(array('bankatm/index'));
         }
 
         $model->password = '';
@@ -137,32 +152,18 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    /*public function actionEntry()
-    {
-        $model = new EntryForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // данные в $model удачно проверены
-
-            // делаем что-то полезное с $model ...
-
-            return $this->render('entry-confirm', ['model' => $model]);
-        } else {
-            // либо страница отображается первый раз, либо есть ошибка в данных
-            return $this->render('entry', ['model' => $model]);
-        }
-    }*/
-
     public function actionSignup(){
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(array('bankatm/index'));
         }
+
         $model = new SignupForm();
         if($model->load(\Yii::$app->request->post()) && $model->validate()){
             $user = new users();
             $user->username = $model->username;
             $user->lastname = $model->lastname;
             $user->password = \Yii::$app->security->generatePasswordHash($model->password);
+            $user->role = $model->role;
             if($user->save()){
                 return $this->goHome();
             }

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Inkass */
 
 $this->title = $model->id_inkass;
-$this->params['breadcrumbs'][] = ['label' => 'Inkasses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Инкассации', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id_inkass], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id_inkass], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id_inkass], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id_inkass], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,11 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id_inkass',
+            //'id_inkass',
+            'id_atm',
             'amount_inkass',
             'date_inkass',
-            'id_atm',
-            'id_user',
+
+            //'id_user',
+            [
+                'attribute' => 'id_user',
+                'value' => $model->user->lastname,
+            ],
         ],
     ]) ?>
 

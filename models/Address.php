@@ -44,9 +44,9 @@ class Address extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_address' => 'Id Address',
-            'region' => 'Region',
-            'address' => 'Address',
+            'id_address' => 'Id Адреса',
+            'region' => 'Область',
+            'address' => 'Адрес',
         ];
     }
 

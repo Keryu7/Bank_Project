@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Soft */
 
-$this->title = 'Update Soft: ' . $model->id_soft;
-$this->params['breadcrumbs'][] = ['label' => 'Softs', 'url' => ['index']];
+$this->title = 'Изменить софт: ' . $model->id_soft;
+$this->params['breadcrumbs'][] = ['label' => 'Софт', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_soft, 'url' => ['view', 'id' => $model->id_soft]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="soft-update">
 

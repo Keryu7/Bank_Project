@@ -38,6 +38,10 @@ class SoftController extends Controller
         $searchModel = new SoftSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->pagination = [
+            'pageSize' => 8,
+        ];
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

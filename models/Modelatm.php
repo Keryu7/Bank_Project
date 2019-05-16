@@ -43,9 +43,9 @@ class Modelatm extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_model' => 'Id Model',
-            'model_name' => 'Model Name',
-            'id_soft' => 'Id Soft',
+            'id_model' => 'Id Модели',
+            'model_name' => 'Наименование модели',
+            'id_soft' => 'Софт',
         ];
     }
 

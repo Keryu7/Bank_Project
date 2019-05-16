@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Repair */
 
-$this->title = 'Update Repair: ' . $model->id_repair;
-$this->params['breadcrumbs'][] = ['label' => 'Repairs', 'url' => ['index']];
+$this->title = 'Изменить ремонт: ' . $model->id_repair;
+$this->params['breadcrumbs'][] = ['label' => 'Ремонты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_repair, 'url' => ['view', 'id' => $model->id_repair]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="repair-update">
 

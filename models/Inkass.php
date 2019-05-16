@@ -48,10 +48,10 @@ class Inkass extends \yii\db\ActiveRecord
     {
         return [
             'id_inkass' => 'Id Inkass',
-            'amount_inkass' => 'Amount Inkass',
-            'date_inkass' => 'Date Inkass',
-            'id_atm' => 'Id Atm',
-            'id_user' => 'Id User',
+            'amount_inkass' => 'Загружено, руб',
+            'date_inkass' => 'Дата инкассации',
+            'id_atm' => 'Номер банкомата',
+            'id_user' => 'Оператор',
         ];
     }
 

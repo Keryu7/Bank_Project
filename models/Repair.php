@@ -48,10 +48,10 @@ class Repair extends \yii\db\ActiveRecord
     {
         return [
             'id_repair' => 'Id Repair',
-            'repair' => 'Repair',
-            'date_repair' => 'Date Repair',
-            'id_atm' => 'Id Atm',
-            'id_user' => 'Id User',
+            'repair' => 'Описание ремонта',
+            'date_repair' => 'Дата ремонта',
+            'id_atm' => 'Номер банкомата',
+            'id_user' => 'Инженер',
         ];
     }
 
