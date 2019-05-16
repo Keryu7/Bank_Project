@@ -26,13 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'summary' => "Показаны {begin} - {end} из {totalCount}",
-        'pager' => [
-
-            'class' => 'views\my\BootstrapLinkPager',
-
-            //other pager config if nesessary
-
-        ],
         'columns' => [
             /*['class' => 'yii\grid\SerialColumn'],*/
 

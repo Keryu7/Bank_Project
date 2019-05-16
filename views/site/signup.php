@@ -35,6 +35,7 @@ use developit\captcha\Captcha;
         'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',]) ?>
     <div class="form-group">
         <div class="col-lg-12">
+            <p style="text-align: center">Нажмите на цифры, чтобы обновить</p>
             <?= Html::submitButton('Регистрация', ['class' => 'btn btn-lg btn-primary btn-block', 'name' => 'signup-button']) ?>
         </div>
     </div>
